@@ -1,3 +1,15 @@
-FROM nginx:1.15.12-alpine
+FROM golang:1.16-alpine
 
-COPY /views/ /usr/share/nginx/html/
+WORKDIR /app
+
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
+COPY . .
+
+RUN go build -v -o /web-example-golang
+
+EXPOSE 8080
+
+CMD [ "/web-example-golang" ]
