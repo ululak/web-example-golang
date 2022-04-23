@@ -33,5 +33,4 @@ jobs:
           script: |
             cd /home/jinubuntu/devsecop/web-example-golang
             ls -lah
-            docker rm -f web-example-golang_webjin && docker rmi web-example-golang_webjin
-            docker-compose -f docker-compose.yaml up -d
+            docker-compose up -d
