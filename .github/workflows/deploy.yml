@@ -24,7 +24,7 @@ jobs:
 
       # https://github.com/jinubuntu/ssh-action
       - name: Deploy docker
-        uses: ululak/ssh-action@main
+        uses: jinubuntu/ssh-action@main
         with:
           host: ${{ secrets.VMHOSTSSH }}
           username: ${{ secrets.VMSSH }}
