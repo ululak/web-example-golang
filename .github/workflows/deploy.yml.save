@@ -15,39 +15,23 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-<<<<<<< HEAD
       
-=======
-
->>>>>>> 366bf70696585e38617ff136612c9954fd3ac750
       - name: Publish Docker image
         run: |
           echo "${{ secrets.DOCKERHUBTOKEN }}" | docker login -u "${{ secrets.DOCKERHUBNAME }}" --password-stdin
           docker build . -t ululak/web-example-golang
           docker push ululak/web-example-golang:latest
 
-<<<<<<< HEAD
       # https://github.com/jinubuntu/ssh-action
       - name: Deploy docker
         uses: ululak/ssh-action@main
-=======
-      # https://github.com/appleboy/ssh-action
-      - name: Deploy docker
-        uses: appleboy/ssh-action@master
->>>>>>> 366bf70696585e38617ff136612c9954fd3ac750
         with:
           host: ${{ secrets.VMHOSTSSH }}
           username: ${{ secrets.VMSSH }}
           password: ${{ secrets.VMSSHPASS }}
           port: ${{ secrets.VMSSHPORT }}
           script: |
-<<<<<<< HEAD
             cd /home/devsecop/web-example-golang
             ls -lah
             docker rm -f web-example-glang_webjin && docker rmi web-example-golang_webjin
             docker-compose -f docker-compose.yaml up -d
-=======
-            cd /home/jinubuntu/devsecop/web-example-golang
-            ls -lah
-            docker-compose up -d
->>>>>>> 366bf70696585e38617ff136612c9954fd3ac750
